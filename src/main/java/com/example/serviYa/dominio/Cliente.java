@@ -38,7 +38,7 @@ public class Cliente {
     
     
     @Column(name = "DIRRECION")
-    private String dirrecion;
+    private String direccion;
     
     @Column(name = "ID_USUARIO")
     private Long idUsuario;
@@ -87,12 +87,12 @@ public class Cliente {
         this.idUsuario = idUsuario;
     }
 
-    public String getDirrecion() {
-        return dirrecion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDirrecion(String dirrecion) {
-        this.dirrecion = dirrecion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
     
     

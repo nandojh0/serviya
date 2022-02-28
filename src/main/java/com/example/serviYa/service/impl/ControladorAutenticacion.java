@@ -30,7 +30,7 @@ public class ControladorAutenticacion implements AuthenticationManager {
 
     private final UserRepository userRepository;
     
-     @Autowired 
+    @Autowired 
     private PasswordEncoder encoder;
     
     public ControladorAutenticacion(UserRepository userRepository) {
@@ -49,18 +49,17 @@ public class ControladorAutenticacion implements AuthenticationManager {
 		
 		if (user == null) {
 			throw new UsernameNotFoundException(userName);
-	    }
-                System.out.print("Conraseña cifrada: "+user.getPassword());
-//                boolean result = encoder.matches(password, user.getPassword());
-//		if (!encoder.matches(password, user.getPassword())) {
-//                throw new BadCredentialsException("Error al ingresar: "+password);
+	    }         
+                
+//                if (!encoder.matches(password, user.getPassword())) {
+//                    throw new BadCredentialsException("Error en la contraseña");
 //                }
 		if (false) {
 			throw new BadCredentialsException("Credenciales erroneas");
 		}
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority("OTRO"));
+		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 		
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(password, "", authorities);
 		usernamePasswordAuthenticationToken.setDetails(new User(userName, "", true, true, true, true, authorities));

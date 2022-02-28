@@ -17,6 +17,18 @@ public class ClienteDTO {
     private String dirrecion;
     private Long idUsuario;
 
+    public ClienteDTO(Long idCliente, Long dni, String nombreCliente, String telefono, String dirrecion) {
+        this.idCliente = idCliente;
+        this.dni = dni;
+        this.nombreCliente = nombreCliente;
+        this.telefono = telefono;
+        this.dirrecion = dirrecion;
+    }
+
+    public ClienteDTO() {
+    }
+    
+    
     public Long getIdCliente() {
         return idCliente;
     }

@@ -22,8 +22,8 @@ public class ClienteConverter {
         cliente.setDni(clienteDTO.getDni());
         cliente.setNombreCliente(clienteDTO.getNombreCliente());
         cliente.setTelefono(clienteDTO.getTelefono());
-        cliente.setDirrecion(clienteDTO.getDirrecion());
-        cliente.setIdUsuario(clienteDTO.getIdUsuario());
+        cliente.setDireccion(clienteDTO.getDirrecion());
+        //cliente.setIdUsuario(clienteDTO.getIdUsuario());
         return cliente;
     }
     public static ClienteDTO toDTO(Cliente cliente) {
@@ -32,7 +32,7 @@ public class ClienteConverter {
 		clienteDTO.setDni(cliente.getDni());
 		clienteDTO.setNombreCliente(cliente.getNombreCliente());
 		clienteDTO.setTelefono(cliente.getTelefono());
-		clienteDTO.setDirrecion(cliente.getDirrecion());
+		clienteDTO.setDirrecion(cliente.getDireccion());
 		clienteDTO.setIdUsuario(cliente.getIdUsuario());
 		return clienteDTO;
 	}
