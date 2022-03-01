@@ -300,7 +300,10 @@
 
                 });
             });
-
+            
+             this.$btnModalNuevo.click(function () {
+                app.$modalNuevoCliente.modal("show");
+            });
             this.$btnCrearCliente.click(function () {
 
                 var errores = app.funciones.validarFormClienteCrear();
