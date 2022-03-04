@@ -5,10 +5,14 @@
  */
 package com.example.serviYa.repository;
 
+import com.example.serviYa.dominio.Solicitud;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author daihan
  */
 public interface SolicitudRepository extends JpaRepository<Solicitud, Long>
+{
     
 }

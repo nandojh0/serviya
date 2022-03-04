@@ -46,10 +46,10 @@ public class ClienteController {
         return empleadoService.save(ClienteConverter.toEntity(clienteDTO));
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_USER')")
-    @PutMapping
+//    @PreAuthorize("hasAnyAuthority('ROLE_USER')")
+    @PutMapping("/modificar")
     public Respuesta<Cliente> modificar(@RequestBody ClienteDTO clienteDTO) {
-        return empleadoService.save(ClienteConverter.toEntity(clienteDTO));
+        return empleadoService.modificar(ClienteConverter.toEntity(clienteDTO));
     }
 
     @DeleteMapping("/{id}")

@@ -47,6 +47,32 @@ public class Cliente {
     @JoinColumn(name = "ID_USUARIO", insertable = false,updatable = false)
     private Usuario usuario;
 
+    public Cliente() {
+         super();
+    }
+
+    public Cliente(Long idCliente, Long dni, String nombreCliente, String telefono, String direccion, Long idUsuario, Usuario usuario) {
+        super();
+        this.idCliente = idCliente;
+        this.dni = dni;
+        this.nombreCliente = nombreCliente;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.idUsuario = idUsuario;
+        this.usuario = usuario;
+    }
+
+    public Cliente(Long idCliente, Long dni, String nombreCliente, String telefono, String direccion) {
+        super();
+        this.idCliente = idCliente;
+        this.dni = dni;
+        this.nombreCliente = nombreCliente;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+    
+    
+    
     public Long getIdCliente() {
         return idCliente;
     }

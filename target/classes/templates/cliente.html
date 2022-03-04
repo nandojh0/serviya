@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Clientes</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" />
+        
+        <link rel="stylesheet" href="js/externo/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+
+<link rel="stylesheet" href="js/externo/selectpicker/bootstrap-select.min.css" />
+<link rel="stylesheet" type="text/css" href="js/externo/datatables/datatables.min.css" />
+<link rel="stylesheet" type="text/css" href="js/externo/datetimepicker/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="js/externo/waves/waves.min.css" />
+<!--<link rel="stylesheet" type="text/css" href="css/menu.css" />
+<link rel="stylesheet" type="text/css" href="css/konecta.css" />-->
+    </head>
+    <body>
+        <main role="main" class="container-fluid main-content">
+            <div class="row">
+                <div class="col-lg-12 mt-1">
+                    <h4 class="title mt-6">
+                        Clientes
+                    </h4>
+                </div>
+                <div class="col-lg-12">
+                    <div class="card card-cd">
+                        <div class="card-body m-md-3">
+                            <div class="row mt-2" id="resultado">
+                                <fieldset class="col-md-12">
+                                    <legend>
+                                        <button id="btn-modal-nuevo" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNuevoCliente">
+                                            <em class="fa fa-plus"></em> Nuevo
+                                        </button>
+                                    </legend>
+                                    <table id="tabla-resultado" class="table tabla-resultado" style="width:100%">
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modal Crear Cliente -->
+        <div class="modal fade" id="modalNuevoCliente" tabindex="-1" role="dialog" aria-labelledby="nuevoClienteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="nuevoClienteModalLabel">Nuevo Cliente</h5>
+                        <button type="button" class="waves-effect waves-light close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="ipt-nombre" class="col-form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="ipt-nombre"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="ipt-dni" class="col-form-label">C.C.</label>
+                                    <input type="text" class="form-control" id="ipt-dni"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="ipt-telefono" class="col-form-label">Telefono</label>
+                                    <input type="text" class="form-control" id="ipt-telefono">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="ipt-direccion" class="col-form-label">Direccion</label>
+                                    <input type="text" class="form-control" id="ipt-direccion">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="btnCrearCliente" type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Modificar Empleado -->
+        <div class="modal fade" id="modalModificarCliente" tabindex="-1" role="dialog" aria-labelledby="modificarClienteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modificarEmpleadoModalLabel">Modificar Cliente</h5>
+                        <button type="button" class="waves-effect waves-light close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="hidden" class="form-control" id="ipt-mdf-id"/>
+                            <input type="hidden" class="form-control" id="ipt-mdf-dni"/>
+<!--                            <input type="hidden" class="form-control" id="ipt-mdf-idUsuario"/>-->
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="ipt-mdf-nombre" class="col-form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="ipt-mdf-nombre"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="ipt-mdf-telefono" class="col-form-label">Telefono</label>
+                                    <input type="text" class="form-control" id="ipt-mdf-telefono">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="ipt-mdf-direccion" class="col-form-label">Direccion</label>
+                                    <input type="text" class="form-control" id="ipt-mdf-direccion">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="btnModificarCliente" type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="js/externo/jquery/jquery-3.3.1.min.js"></script>
+<script src="js/externo/bootstrap/popper.min.js"></script>
+<script src="js/externo/bootstrap/bootstrap.min.js"></script>
+
+<script src="js/externo/selectpicker/bootstrap-select-custom.js"></script>
+<script src="js/externo/selectpicker/i18n/defaults-es_ES.min.js"></script>
+<script src="js/externo/loading-overlay/loadingoverlay.min.js"></script>
+
+<script type="text/javascript" src="js/externo/datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/externo/datetimepicker/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+
+<!-- Lib needed for sweetalert2 support on IE11  -->
+<script type="text/javascript">
+    if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent))
+        document.write('<script src="js/externo/ajaxcore/core_2.4.1.js"><\/script>');
+</script>
+<script src="js/externo/sweetAlert/sweetalert2.all.js"></script>
+
+<script src="js/externo/waves/waves.min.js"></script>
+<script type="text/javascript">
+	Waves.attach('.nav-link', ['waves-float']);
+	Waves.init();
+</script>
+        <script type="text/javascript" src="js/externo/datatables/datatables.min.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="js/cliente.js"></script>
+    </body>
+</html>
